@@ -5,7 +5,7 @@ const messageInp = document.getElementById("messageInp");
 const btn = document.getElementById("btn");
 const messageContainer = document.querySelector(".container");
 
-const msgSound = new Audio("../ting.mp3");
+const msgSound = new Audio("../tiRng.mp3");
 
 function append(msg, pos) {
     const newMsg = document.createElement("div");
@@ -34,4 +34,8 @@ socket.on('user-joined', name => {
 
 socket.on('receive', data => {
     append(`${data.message}: ${data.name}`, 'left');
+});
+
+socket.on('left', name => {
+    append(`${name} left the chat`, 'left');
 });
